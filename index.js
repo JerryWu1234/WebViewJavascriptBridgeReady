@@ -25,21 +25,12 @@ function getOsType(){
 }
 
 
-function isPenglaiApp() {
-
-  let isApp = /penglaiapp/i.test(navigator.userAgent);
-  return /penglaiapp/i.test(navigator.userAgent);
-}
 
 class Native{
   constructor(){
     this._bridge = null;
-    this._nativeCallHandlers = {};
-    if(isPenglaiApp()){
-      this.getBridge();
-    }else{
-      console.log('bushi app')
-    }
+    // this._nativeCallHandlers = {};
+    this.getBridge();
   }
   getBridge(){
     let osType = getOsType();
@@ -57,40 +48,11 @@ class Native{
     // this._impls.onCall(this._nativeCallHandlers);
   }
 
-  async invoiceInfo (){
-    return await this._bridge.invoice();
-  }
-
-  async getTokenK(){
-
-    return await this._bridge.getToken();
-  }
-
-  async goBackFun(){
-    return await this._bridge.goBack();
-  }
-  async openLogin(){
-    return await this._bridge.openLogin();
-  }
-  async clickTime(startTime,endTime,adress){
-    return await this._bridge.clickTime(startTime,endTime,adress);
-  }
-  async clickAdress(startTime,endTime,adress){
-    return await this._bridge.clickAdress(startTime,endTime,adress);
-  }
-  async submitFromWeb(packageArray){
-    return await this._bridge.submitFromWeb(packageArray);
-  }
-  isPenglaiApp () {
-    return isPenglaiApp();
-  }
-
-  getOsType () {
-    return getOsType();
-  }
-
   async JsBridge(params) {
     return await this._bridge.webViewClick(params);
+  }
+  async Jscall(params) {
+      return await this._bridge.Jscall(params);
   }
 }
 

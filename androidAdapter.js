@@ -2,7 +2,7 @@ let getBridge = new Promise((resolve, reject) => {
   if (window.WebViewJavascriptBridge) {
     resolve(window.WebViewJavascriptBridge);
     return;
-  }
+}
 
   document.addEventListener("WebViewJavascriptBridgeReady", () => {
     // window.WebViewJavascriptBridge.init(() => {
